@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            overflow: hidden;
+        }
+        .main{
+            height: 100vh;
+            width: 100%;
+            border: 1px solid;
+            position: relative;
+            background: linear-gradient(to bottom,lightblue,white);
+            overflow: hidden;
+            display: none;
+
+        }
+        .active{
+            display: block;
+        }
+        .person{
+            height: 35vh;
+            width: 10%;
+            /* border: 1px solid; */
+            z-index: 1;
+            position: absolute;
+            /* bottom: 5%; */
+            left: 5%;
+            top: 350px;
+            background-image:url(../localstorage/tank/person.gif) ;
+            background-size:cover ;
+            background-position: center;
+        }
+        .active{
+            animation: jump 1s linear ;
+        }
+        @keyframes jump{
+            0%{
+            bottom: 5%;
+            }
+            50%{
+            bottom: 200%;
+                
+            }
+            100%{
+            bottom: 5%;
+
+            }
+        }
+        .main2{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-image: url(../localstorage/tank/night-background-with-rental-house_33099-1128.webp);
+            background-size: cover;
+            background-position: center;
+            
+        }
+        .m2{
+            left: 100%;
+            animation: move 5s linear infinite;
+        }
+        @keyframes move{
+            0%{
+                left: 100%;
+            }
+            100%{
+                left: 0%;
+            }
+        }
+        .m1{
+            /* left: 100%; */
+            animation: move3 5s linear infinite;
+        }
+        @keyframes move3{
+            0%{
+                left: 0%;
+            }
+            100%{
+                left: -100%;
+            }
+        }
+        .move{
+            height: 20vh;
+            width: 20%;
+            border: 1px solid;
+            /* left: 80%; */
+            position: absolute;
+        }
+        .stone{
+            height: 25vh;
+            width: 10%;
+            /* border: 1px solid; */
+            float: left;
+            margin-top:450px;
+            z-index: 1;
+            margin-left: 120%;
+            background-image: url(../localstorage/tank/wolf.gif);
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
+        .stone1{
+            height: 15vh;
+            width: 8%;
+            /* border: 1px solid red; */
+            /* float: left; */
+            /* margin:  12%; */
+            margin-top: 65%;
+
+            /* background-color: red; */
+            background-image: url(../localstorage/tank/wolf.gif);
+            background-position: center;
+            background-size: cover;
+        }
+        .m1 :nth-child(1){
+            margin-left: 40%;
+        }
+        .start{
+            margin-top: 35vh;
+            margin-left: 40%;
+            background-image: url(../localstorage/tank/buttonStock1h.png);
+            background-position: center;
+            background-size: cover;
+            height: 15vh;
+            width: 20%;
+            font-size: 40px;
+            background-color:transparent;
+            color: aliceblue;
+            text-transform: uppercase;
+            font-family: 'Dancing Script', cursive;
+            transition: all 0.35s;
+        }
+        .game{
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+            /* top: 45%; */
+            display: none;
+            background-image: url(../localstorage/tank/1c2f2c2954d30afdd032ca5b7e48584c.png);
+            background-size: cover;
+            background-position: center;
+        }
+        .gameover{
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            margin-top: 45vh;
+            font-size: 80px;
+        }
+        .active2{
+            display: block;
+        }
+        .scoer{
+            position: absolute;
+            border: 1px solid;
+
+            
+        }
+        .login_page{
+            /* background: black; */
+            background-repeat:no-repeat ;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background-image: url(../localstorage/tank/royal.jpg);
+        }
+        .inp{
+            position: absolute;
+            left: 40%;
+            top: 20vh;
+            height: 15vh;
+            width: 20%;
+            background-image: url(../localstorage/tank/input2.png);
+            background-position: center;
+            background-size:cover;
+            padding: 0 60px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            font-family: 'Dancing Script', cursive;
+            outline: none;
+
+            
+        }
+        .inpu{
+            position: absolute;
+            left: 40%;
+            top: 40vh;
+            height: 15vh;
+            width: 20%;
+            background-image: url(../localstorage/tank/input2.png);
+            background-position: center;
+            background-size:cover;
+            padding: 0 60px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            font-family: 'Dancing Script', cursive;
+            outline: none;
+
+        }
+        .btn{
+            position: absolute;
+            left: 40%;
+            height: 8vh;
+            width: 10%;
+            background-color: transparent;
+            color: aliceblue;
+            text-transform: uppercase;
+            top: 60vh;
+            font-family: 'Dancing Script', cursive;
+            background-image: url(../localstorage/tank/buttonStock1h.png);
+            background-position: center;
+            background-size: cover;
+        }
+        .btnn{
+            position: absolute;
+            left: 40%;
+            top: 40vh;
+            background-color: transparent;
+            color: aliceblue;
+            text-transform: uppercase;
+            top: 60vh;
+            height: 8vh;
+            width: 10%;
+            font-family: 'Dancing Script', cursive;
+            background-image: url(../localstorage/tank/buttonStock1h.png);
+            background-position: center;
+            background-size: cover;
+        }
+        .pta{
+            margin-left:40%;
+            background-image: url(../localstorage/tank/input2.png);
+            background-position: center;
+            background-size:cover;
+            padding: 0 60px;
+            color: white;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            font-family: 'Dancing Script', cursive;
+            outline: none;
+            height: 15vh;
+            width: 20%;
+        }
+        .btn{
+            margin:0 10%;
+        }
+        .none{
+            display: none;
+        }
+        .sign_page{
+            border: 1px solid;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            background: gray;
+            background-image: url(../localstorage/tank/1c2f2c2954d30afdd032ca5b7e48584c.png);
+            background-position: center;
+            background-size: cover;
+            
+
+        }
+        .start-game{
+            height: 100vh;
+            top: 0;
+            z-index: -1;
+            width: 100%;
+            position: absolute;
+            background-position: center;
+            background-size: cover; 
+            background-image: url(../localstorage/tank/witcher3_2015-06-18_07-19-03-032.jpg);
+        }
+        .block{
+            display: block;
+        }
+        .sub{
+            margin-top: 10vh;
+            margin-left: 40%;
+            background-image: url(../localstorage/tank/buttonStock1h.png);
+            background-position: center;
+            background-size: cover;
+            height: 8vh;
+            width: 10%;
+            background-color:transparent;
+            color: aliceblue;
+            text-transform: uppercase;
+            display: inline-block;
+            font-family: 'Dancing Script', cursive;
+
+
+        }
+        .user{
+            /* text-align: center; */
+            font-family: 'Dancing Script', cursive;
+            position: absolute;
+            left: 40%;
+            top: 0%;
+
+
+        }
+        .sub1{
+            /* margin-top: -10vh; */
+            position: relative;
+            display: inline-block;
+            margin-left: 50%;
+            top: -8vh;
+            background-image: url(../localstorage/tank/buttonStock1h.png);
+            background-position: center;
+            background-size: cover;
+            height: 8vh;
+            width: 10%;
+            background-color:transparent;
+            color: aliceblue;
+            text-transform: uppercase;
+            font-family: 'Dancing Script', cursive;
+
+
+        }
+        .logo{
+            width: 15%;
+            left: 42.5%;
+            top: 65%;
+            position: absolute;
+            height: 35%;
+        }
+        .top{
+            margin-top: 20vh;
+        }
+        .loading{
+            height: 5vh;
+            width: 40%;
+            /* border: 1px solid; */
+        position: relative;
+        left: 30%;
+        top: 10vh;
+        background-image: url(../localstorage/tank/buttons_10.png);
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: all 0.5s;
+        overflow: hidden;
+
+        }
+        .sowrd{
+            position: absolute;
+            width: 100%;
+            /* border: 1px solid white; */
+            height: 100%;
+            left: -100%;
+        overflow: hidden;
+
+
+        }
+        .load{
+            opacity: 1;
+
+        }
+        .ani{
+            animation: move2 5s;
+
+
+        }
+        @keyframes move2{
+            form{
+                margin-left: -100%;
+
+            }
+            to{
+                margin-left: 100%;
+            }
+        }
+        .imgs{
+            height: 100%;
+            position: absolute;
+            right: 0%;
+        }
+        .elec{
+            height: 100%;
+            position: absolute;
+            width: 150%;
+            left: -50%
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login_page">
+        <input type="email" class="inp" placeholder="Email" >
+        <input type="password" class="inpu" placeholder="Password">
+        <button class="btn">sign up</button>
+        <button class="btnn">login</button>
+        <img class="logo" src="../localstorage/tank/logo.webp" alt="">
+
+    </div>
+    <div class="sign_page">
+        <input type="email" class="email pta" placeholder="Email">
+        <input type="password" class="pas pta" placeholder="Password">
+        <!-- <input type="password" class="pas2 pta" placeholder="conform Password"> -->
+        <input type="Name" class="name pta" placeholder="user name">
+
+
+        <button class="sub">submit</button>
+        <button class="sub1">back</button>
+
+        <img class="logo" src="../localstorage/tank/logo.webp" alt="">
+
+        <!-- <input type="text"> -->
+       
+    </div>
+    <div class="main">
+        <div class="scoer_div">
+            <h3 class="score">score:0</h3>
+            <h3 class="user"></h3>
+        </div>
+        <div class="person">
+        </div>
+        <div class="main2 m1">
+        </div>
+        <div class="main2 m2">          
+    </div>
+    </div>
+    <div class="start-game">
+    <button class="start">start</button>
+
+    <div class="loading">
+        <div class="sowrd">
+            <img class="imgs" src="../localstorage/tank/sword_PNG5525.png" alt="">
+            <img class="elec" src="../localstorage/tank/simple-lightning-png-26.png" alt="">
+        </div>
+    </div>
+
+    </div>
+    <div class="game">
+        <h1 class="gameover">GAME OVER</h1>
+        <!-- <button class="restart">restart</button> -->
+        
+     </div>
+
+    <script>
+         const inp =document.querySelector(".inp")
+        const inpu =document.querySelector(".inpu")
+        const btnn=document.querySelector(".btnn")
+        const sign=document.querySelector(".btn")
+        const main=document.querySelector(".login_page")
+        const newmain=document.querySelector(".sign_page")
+        // const newmainn=document.querySelector(".main")
+        const emailEl=document.querySelector(".email")
+        const nameEl =document.querySelector(".name")
+        const pasEl=document.querySelector(".pas")
+        const sub=document.querySelector(".sub")
+        const subb=document.querySelector(".sub1")
+        const user=document.querySelector(".user")
+
+
+
+
+
+        // js gamne/////////////////////////////
+
+
+        const plyr =document.querySelector(".person")
+        const m1 =document.querySelectorAll(".stone")
+        const m2 =document.querySelector(".main")
+        const btn=document.querySelector(".start")
+        var game=document.querySelector(".game")
+        var gameover=document.querySelector(".gameover")
+        var scoreEl=document.querySelector(".score")  
+        var load=document.querySelector(".loading") 
+        var sowrd=document.querySelector(".sowrd")   
+
+
+        const restart=document.querySelector(".restart")
+
+
+        var data =[]
+      
+      btnn.addEventListener("click",function(){
+          var inpv=inp.value
+          var inpva=inpu.value
+          
+          var arr= JSON.parse(localStorage.getItem('data'))
+          arr.forEach(itme => {
+             console.log(itme.name,itme.password,itme.email);
+
+          if (inpv==itme.email && inpva==itme.password) {
+            main.classList.add("none")
+          newmain.classList.add('none')
+        //   btn.classList.add("block")
+          
+        
+              
+          }
+          else{
+              alert(
+                  "sign up first"
+              )
+          }
+              
+          });
+      })
+      sign.addEventListener("click",function(){
+          main.classList.add("none")
+          newmain.classList.add('block')
+
+          
+      })
+      sub.addEventListener("click",function(){
+        var mailva=emailEl.value
+          var nameva=nameEl.value
+          var pasva=pasEl.value
+        if(mailva==""|| nameva==""|| pasva==""){
+            alert(
+                "fill all the input"
+            )
+        }
+        else{
+            var newe={
+              name:"",
+              email:"",
+              password:"",
+
+          }
+          var mailva=emailEl.value
+          var nameva=nameEl.value
+          var pasva=pasEl.value
+
+          newe.name=nameva
+          newe.email=mailva
+          newe.password=pasva
+
+          data.push(newe)
+
+          localStorage.setItem("data",JSON.stringify(data))
+
+          main.classList.remove("none")
+          newmain.classList.remove('block')
+
+          
+          
+
+
+        }
+         
+      })
+      subb.addEventListener("click",function(){
+
+        main.classList.remove("none")
+          newmain.classList.remove('block')
+          console.log("hello ");
+      })
+
+
+
+
+
+
+    //   game function ..........................
+
+    let player = {
+            speed: 50
+         , score: 0
+         ,lspeed:10
+         };
+        let keys = {
+            ArrowUp: false
+            ,ArrowDown: false
+        }
+        var count= 0
+        var ani=10
+        btn.addEventListener("click", loading)
+        function loading() {
+            btn.classList.add("top")
+            load.classList.add("load")
+            sowrd.classList.add("ani")
+            setTimeout(() => {
+                start()
+            }, 5000);
+        
+            
+        }
+        function moveLines() {
+            let lines = document.querySelectorAll(".stone");
+            lines.forEach(function (item) {
+            if (item.y >= 1500) {
+            item.y = 500;
+                }
+                item.y += player.lspeed;
+                item.style.left = -item.y + "px";
+                })
+                }
+        function start() {
+            document.addEventListener("keydown", pressKeyOn);
+        document.addEventListener("keyup", pressKeyOff);
+            m2.classList.add("active")
+            player.inPlay = true;
+            btn.style.display="none"
+            playgame()
+            for (let x = 0; x < 10; x++) {
+             let div = document.createElement("div");
+               div.classList.add("stone");
+                div.y = x * 7000;
+                // console.log(div.y);
+              div.style.left = div.y + "px";
+                    m2.appendChild(div);
+                };
+                setInterval(() => {
+                    // console.log("hello");
+                    player.score++
+                    scoreEl.innerHTML="score:"+player.score
+                    // console.log();
+
+                    if(player.score==25){
+                        win()
+                    }
+
+                }, 1000);
+
+        }
+        function pressKeyOn(e) {
+            e.preventDefault();
+            keys[e.key] = true;
+            // console.log(keys[event.key] );
+        }
+        function pressKeyOff(e) {
+            e.preventDefault();
+            keys[e.key] = false;
+        }
+        function playgame() {
+            // creatston()
+            moveLines()
+            moveEnemy(plyr)
+                 player.y=plyr.offsetTop
+                 player.x=plyr.offsetLeft
+                if(player.inPlay){
+                        let road = m2.getBoundingClientRect()
+                    if(keys.ArrowUp && player.y > road.top+200){
+                        player.y -= player.speed;
+                      }
+                      
+                      if(keys.ArrowDown && player.y < road.bottom-200){
+                        player.y += player.speed;
+                      }
+                plyr.style.top=player.y+"px"
+                window.requestAnimationFrame(playgame)
+             }
+        }
+        function isCollide(a, b) {
+                let aRect = a.getBoundingClientRect();
+                let bRect = b.getBoundingClientRect();
+                // console.log(a,b);
+                return !(
+                (aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || (aRect.right < bRect.left) || (aRect.left > bRect.right)
+                )
+                }
+        function creatston() {
+            for (let x = 0; x < 10; x++) {
+             let div = document.createElement("div");
+               div.classList.add("stone");
+                div.y = x * 500;
+                console.log(div.y);
+              div.style.left = div.y + "px";
+                    m2.appendChild(div);
+                }
+        }
+        function moveEnemy(plyr) {
+            let ele = document.querySelectorAll(".stone");
+                ele.forEach(function (item) {
+                if (isCollide(plyr, item)) {
+                endgame()
+                player.score=player.score
+                }
+                   
+                })
+            }
+                function endgame() {
+                    m2.classList.remove("active")
+                    game.classList.add("active2")
+                    
+                }
+                function win(){
+                    m2.classList.remove("active")
+                    game.classList.add("active2")
+                    gameover.innerHTML="you win"
+                    
+                }
+            //    restart.addEventListener('click',start)
+
+
+    </script>   
+</body>
+</html>
